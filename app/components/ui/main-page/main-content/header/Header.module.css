@@ -34,8 +34,8 @@
   justify-content: center;
   align-items: center;
 
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
 }
 
 .header_arrow_svg {
@@ -63,7 +63,7 @@
   border-radius: 20px;
 
   padding: 0 15px;
-  height: 32px;
+  height: 40px;
 
   transition: all 0.3s ease;
 
@@ -81,8 +81,8 @@
   justify-content: center;
   align-items: center;
 
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 .login_svg {
@@ -97,7 +97,7 @@
 
 .play_list {
   cursor: pointer;
-  
+
   display: flex;
   flex-direction: row;
 }
