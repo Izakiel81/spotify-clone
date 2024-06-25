@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Navbar.module.css";
-import HomeSVG from "../assets/HomeSVG";
-import SearchSVG from "../assets/SearchSVG";
-import LibraryMusicSVG from "../assets/LibraryMusicSVG";
-import PlusSVG from "../assets/PlusSVG";
+import HomeSVG from "./assets/HomeSVG";
+import SearchSVG from "./assets/SearchSVG";
+import LibraryMusicSVG from "./assets/LibraryMusicSVG";
+import PlusSVG from "./assets/PlusSVG";
 
 function Navbar() {
   return (
