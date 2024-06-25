@@ -1,0 +1,59 @@
+.song_wrapper {
+  background-color: #1d1c1d;
+  display: grid;
+  grid-template: 4fr repeat(2, 1fr) / 1fr;
+
+  align-items: center;
+
+  padding: 10px;
+
+  border-radius: 15px;
+  width: 200px;
+  height: 250px;
+}
+
+.cover {
+  position: relative;
+  cursor: pointer;
+
+  border-radius: 5px;
+  background-color: #fff;
+
+  height: 100%;
+}
+
+.play_button {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  z-index: 1;
+
+  background-color: #17813a;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 45px;
+  height: 45px;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.play_button.inactive {
+  opacity: 0;
+  bottom: -3px;
+}
+
+.play_button.active {
+  opacity: 1;
+  bottom: 3px;
+}
+.play_svg {
+  position: relative;
+  top: -1px;
+  right: -1px;
+  width: 30px;
+  height: 30px;
+}

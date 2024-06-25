@@ -1,3 +1,4 @@
+'use client'
 import MainPage from "./components/ui/main-page/MainPage";
 import styles from "./page.module.css";
 
