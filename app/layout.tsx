@@ -4,6 +4,7 @@ import "./globals.css";
 import SupabaseProvider from "@/providers/SupabaseProvider";
 import UserProvider from "@/providers/UserProvider";
 import ModalProvider from "@/providers/ModalProvider";
+import ToasterProvider from "@/providers/ToasterProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <SupabaseProvider>
-        <UserProvider>
-          <ModalProvider />
-          <body className={inter.className}>{children}</body>
-        </UserProvider>
-      </SupabaseProvider>
+      <body className={inter.className}>
+        <ToasterProvider/>
+        <SupabaseProvider>
+          <UserProvider>
+            <ModalProvider />
+            {children}
+          </UserProvider>
+        </SupabaseProvider>
+      </body>
     </html>
   );
 }

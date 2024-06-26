@@ -3,9 +3,32 @@ import styles from "./Header.module.css";
 import ArrowSVG from "../assets/ArrowSVG";
 import HeartSVG from "../assets/HeartSVG";
 import UserSVG from "../assets/UserSVG";
-
+import { useRouter } from "next/navigation";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useUser } from "@/hooks/useUser";
+import toast from "react-hot-toast";
 
 function Header() {
+  const router = useRouter();
+
+  const authModal = useAuthModal();
+
+  const supabaseClient = useSupabaseClient();
+  const { user } = useUser();
+
+  const handleLogout = async () => {
+    const { error } = await supabaseClient.auth.signOut();
+    // TODO: Reset any playing songs
+    router.refresh();
+
+    if(error){
+      toast.error(error.message);
+    }else{
+      toast.success("Logged out successfully!")
+    }
+  };
+
   return (
     <header className={styles.header}>
       <span className={styles.header_title}>
@@ -20,12 +43,26 @@ function Header() {
             />
           </span>
         </span>
-        <span className={styles.login_container}>
-          <button className={styles.login_button}>Logout</button>
-          <span className={styles.login_icon}>
-            <UserSVG className={styles.login_svg} />
+        {user ? (
+          <span className={styles.logout_container}>
+            <button className={styles.logout_button} onClick={handleLogout}>Logout</button>
+            <span className={styles.logout_icon}>
+              <UserSVG className={styles.logout_svg} />
+            </span>
           </span>
-        </span>
+        ) : (
+          <span className={styles.logout_container}>
+            <button
+              className={styles.sign_up_button}
+              onClick={authModal.onOpen}
+            >
+              Sign up
+            </button>
+            <button className={styles.logout_button} onClick={authModal.onOpen}>
+              Log in
+            </button>
+          </span>
+        )}
       </span>
 
       <h1>Welcome back</h1>

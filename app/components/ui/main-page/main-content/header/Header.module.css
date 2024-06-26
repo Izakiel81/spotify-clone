@@ -43,7 +43,7 @@
   height: 20px;
 }
 
-.login_container {
+.logout_container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -51,18 +51,18 @@
   gap: 10px;
 }
 
-.login_button {
+.logout_button {
   cursor: pointer;
   border: none;
 
   background-color: #fff;
   color: #000;
 
-  font: 700 18px/22px Poppins;
+  font: 400 17px/19px Poppins;
 
   border-radius: 20px;
 
-  padding: 0 15px;
+  padding: 0 35px;
   height: 40px;
 
   transition: all 0.3s ease;
@@ -73,7 +73,7 @@
   }
 }
 
-.login_icon {
+.logout_icon {
   background-color: #fff;
   border-radius: 50%;
 
@@ -85,9 +85,29 @@
   height: 40px;
 }
 
-.login_svg {
+.logout_svg {
   width: 20px;
   height: 20px;
+}
+
+.sign_up_button{
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font: 400 17px/19px Poppins;
+
+  border-radius: 20px;
+
+  padding: 0 25px;
+  height: 40px;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #000;
+    background-color: #fff;
+  }
 }
 
 .play_lists_container {
