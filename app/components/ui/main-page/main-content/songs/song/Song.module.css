@@ -1,4 +1,5 @@
 .song_wrapper {
+  cursor: pointer;
   background-color: #1d1c1d;
   display: grid;
   grid-template: 4fr repeat(2, 1fr) / 1fr;
@@ -10,11 +11,14 @@
   border-radius: 15px;
   width: 200px;
   height: 250px;
+
+  &:hover {
+    filter: brightness(1.5);
+  }
 }
 
 .cover {
   position: relative;
-  cursor: pointer;
 
   border-radius: 5px;
   background-color: #fff;

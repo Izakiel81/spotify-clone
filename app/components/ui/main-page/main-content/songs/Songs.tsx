@@ -1,14 +1,15 @@
-import React from 'react'
-import Song from './song/Song'
+import React from "react";
+import Song from "./song/Song";
+import styles from "./Songs.module.css";
 
-type Props = {}
+type Props = {};
 
 function Songs({}: Props) {
   return (
-    <div>
-        <Song/>
+    <div className={styles.songs_wrapper}>
+      <Song />
     </div>
-  )
+  );
 }
 
-export default Songs
+export default Songs;
