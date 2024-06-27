@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import styles from "./Navbar.module.css";
 import HomeSVG from "./assets/HomeSVG";
