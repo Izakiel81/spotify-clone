@@ -8,6 +8,7 @@ import useAuthModal from "@/hooks/useAuthModal";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useUser } from "@/hooks/useUser";
 import toast from "react-hot-toast";
+import Button from "../../../button/Button";
 
 function Header() {
   const router = useRouter();
@@ -22,10 +23,10 @@ function Header() {
     // TODO: Reset any playing songs
     router.refresh();
 
-    if(error){
+    if (error) {
       toast.error(error.message);
-    }else{
-      toast.success("Logged out successfully!")
+    } else {
+      toast.success("Logged out successfully!");
     }
   };
 
@@ -45,20 +46,25 @@ function Header() {
         </span>
         {user ? (
           <span className={styles.logout_container}>
-            <button className={styles.logout_button} onClick={handleLogout}>Logout</button>
+            <button className={styles.logout_button} onClick={handleLogout}>
+              Log out
+            </button>
             <span className={styles.logout_icon}>
               <UserSVG className={styles.logout_svg} />
             </span>
           </span>
         ) : (
           <span className={styles.logout_container}>
-            <button
-              className={styles.sign_up_button}
+            <Button
+              className="
+              bg-transparent
+              text-neutral-300
+              font-medium"
               onClick={authModal.onOpen}
             >
               Sign up
-            </button>
-            <button className={styles.logout_button} onClick={authModal.onOpen}>
+            </Button>
+            <button className={styles.logout_button} style={{width: "180px"}} onClick={authModal.onOpen}>
               Log in
             </button>
           </span>

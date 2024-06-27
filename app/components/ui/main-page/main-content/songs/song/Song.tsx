@@ -10,8 +10,8 @@ function Song({}: Props) {
   const [isOnCover, setIsOnCover] = React.useState<boolean>(false);
 
   return (
-    <div className={styles.song_wrapper}>
-      <span className={styles.cover} onMouseEnter={() => setIsOnCover(true)} onMouseLeave={() => setIsOnCover(false)}>
+    <div className={styles.song_wrapper} onMouseEnter={() => setIsOnCover(true)} onMouseLeave={() => setIsOnCover(false)}>
+      <span className={styles.cover}>
         <Image className={styles.cover_img} src="" alt="" />
         <span className={classNames(isOnCover ? [styles.play_button, styles.active] : [styles.play_button, styles.inactive])}>
           <PlaySVG className={styles.play_svg} />
