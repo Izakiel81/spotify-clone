@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React from "react";
 import styles from "./Navbar.module.css";
 import HomeSVG from "./assets/HomeSVG";
@@ -8,16 +8,24 @@ import PlusSVG from "./assets/PlusSVG";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useUser } from "@/hooks/useUser";
 import useUploadModal from "@/hooks/useUploadModal";
+import { Song } from "@/types";
+import Library from "./library/Library";
 
-function Navbar() {
+export const revalidate = 0;
+
+interface NavbarProps {
+  songs: Song[];
+}
+
+function Navbar({ songs }: NavbarProps) {
   const authModal = useAuthModal();
   const uploadModal = useUploadModal();
-  const {user} = useUser();
+  const { user } = useUser();
 
   const onClick = () => {
     if (!user) {
       return authModal.onOpen();
-    } 
+    }
     // TODO: Check for subscription
     return uploadModal.onOpen();
   };
@@ -38,15 +46,7 @@ function Navbar() {
         </span>
       </div>
       <div className={styles.nav_item_second}>
-        <span className={styles.nav_list_item_wrapper}>
-          <span className={styles.nav_list_item}>
-            <LibraryMusicSVG className={styles.nav_list_item_svg} /> Your
-            library
-          </span>
-          <span className={styles.nav_list_item} onClick={onClick}> 
-            <PlusSVG className={styles.nav_list_item_svg} />
-          </span>
-        </span>
+        <Library songs={songs} />
       </div>
     </nav>
   );

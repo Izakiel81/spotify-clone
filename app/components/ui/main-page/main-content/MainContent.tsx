@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./header/Header";
-import getSongs from "@/app/components/actions/getSongs";
+import getSongs from "@/actions/getSongs";
 import PageContent from "./page-content/PageContent";
 
 type Props = {};
