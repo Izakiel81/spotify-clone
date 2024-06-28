@@ -28,6 +28,7 @@ function Header({ children, className }: HeaderProps) {
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
     // TODO: Reset any playing songs
+
     router.refresh();
 
     if (error) {
@@ -98,7 +99,7 @@ function Header({ children, className }: HeaderProps) {
         </div>
         <div className="flex md:hidden gap-x-2 items-center">
           <button
-          onClick={() => router.push("/")}
+            onClick={() => router.push("/")}
             className="
           rounded-full
           p-2
@@ -115,7 +116,7 @@ function Header({ children, className }: HeaderProps) {
           </button>
 
           <button
-          onClick={() => router.push("/search")}
+            onClick={() => router.push("/search")}
             className="
           rounded-full
           p-2
@@ -144,6 +145,20 @@ function Header({ children, className }: HeaderProps) {
               <div>
                 <Button
                   className="
+              bg-white
+              px-6
+              py-2"
+                  onClick={handleLogout}
+                >
+                  Log out
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <Button
+                  className="
               bg-transparent
               text-neutral-300
               font-medium"
@@ -161,20 +176,6 @@ function Header({ children, className }: HeaderProps) {
                   onClick={authModal.onOpen}
                 >
                   Log in
-                </Button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div>
-                <Button
-                  className="
-              bg-white
-              px-6
-              py-2"
-                  onClick={handleLogout}
-                >
-                  Log out
                 </Button>
               </div>
             </>
