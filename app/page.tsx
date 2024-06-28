@@ -1,12 +1,63 @@
 import getSongsByUserId from "@/actions/getSongsByUserId";
 import MainPage from "./components/ui/main-page/MainPage";
 import styles from "./page.module.css";
+import Header from "./components/ui/header/Header";
+import ListItem from "./components/ui/header/list-item/ListItem";
+import PageContent from "./components/ui/page-content/PageContent";
 
+export const revalidate = 0;
 
-export default function Home() {
+export default async function Home() {
+  const userSongs = await getSongsByUserId();
+
   return (
-    <main className={styles.main}>
-      <MainPage />
-    </main>
+    <div
+      className="
+      bg-neutral-900
+      rounded-lg
+      h-full
+      w-full
+      overflow-hidden
+      overflow-y-auto
+    "
+    >
+      <Header>
+        <div className="mb-2">
+          <h1
+            className="
+          text-white 
+          text-3xl 
+          font-semibold
+          "
+          >
+            Welcome back
+          </h1>
+          <div
+            className="
+          grid
+          grid-cols-1
+          sm:grid-cols-2
+          xl:grid-cols-3
+          2xl:grid-cols-4
+          gap-3
+          mt-4
+          "
+          >
+            <ListItem
+              image={"/images/liked_song.png"}
+              name={"Liked Songs"}
+              href={"liked"}
+            />
+          </div>
+        </div>
+      </Header>
+
+      <div className="mt-2 mb-7 px-6">
+        <div className="flex justify-between items-center">
+          <h1 className="text-white text-2xl font-semibold">Newest songs</h1>
+        </div>
+        <PageContent songs={userSongs} />
+      </div>
+    </div>
   );
 }
