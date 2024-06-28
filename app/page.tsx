@@ -1,6 +1,4 @@
 import getSongsByUserId from "@/actions/getSongsByUserId";
-import MainPage from "./components/ui/main-page/MainPage";
-import styles from "./page.module.css";
 import Header from "./components/ui/header/Header";
 import ListItem from "./components/ui/header/list-item/ListItem";
 import PageContent from "./components/ui/page-content/PageContent";
