@@ -1,12 +1,12 @@
-import getSongsByUserId from "@/actions/getSongsByUserId";
 import Header from "./components/ui/header/Header";
 import ListItem from "./components/ui/header/list-item/ListItem";
 import PageContent from "./components/ui/page-content/PageContent";
+import getSongs from "@/actions/getSongs";
 
 export const revalidate = 0;
 
 export default async function Home() {
-  const userSongs = await getSongsByUserId();
+  const songs = await getSongs();
 
   return (
     <div
@@ -54,7 +54,7 @@ export default async function Home() {
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">Newest songs</h1>
         </div>
-        <PageContent songs={userSongs} />
+        <PageContent songs={songs} />
       </div>
     </div>
   );

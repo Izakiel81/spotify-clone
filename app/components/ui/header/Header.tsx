@@ -11,6 +11,7 @@ import { twMerge } from "tailwind-merge";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
+import { FaUser } from "react-icons/fa";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -151,6 +152,14 @@ function Header({ children, className }: HeaderProps) {
                   onClick={handleLogout}
                 >
                   Log out
+                </Button>
+              </div>
+              <div>
+                <Button
+                className="
+                  bg-white
+                  ">
+                  <FaUser className="text-black" size={20} />
                 </Button>
               </div>
             </>
