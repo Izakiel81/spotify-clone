@@ -15,7 +15,7 @@ const AuthModal = () => {
   const supabaseClient = useSupabaseClient();
   const router = useRouter();
   const { session } = useSessionContext();
-  const { onClose, isOpen } = useAuthModal();
+  const { onClose, isOpen, view} = useAuthModal();
 
   const onChange = (open: boolean) => {
     if (!open) {
@@ -31,14 +31,15 @@ const AuthModal = () => {
   }, [session, router, onClose]);
   return (
     <Modal
-      title="Welcome back"
-      description="Login to your account"
+      title="Welcome"
+      description={view === "sign-in" ? "Login to your account" : "Create an account"}
       isOpen={isOpen}
       onChange={onChange}
     >
       <Auth
         supabaseClient={supabaseClient}
         theme="dark"
+        view={ view === "sign-in" ? "sign_in" : "sign_up"} 
         magicLink
         providers={["github"]}
         appearance={{

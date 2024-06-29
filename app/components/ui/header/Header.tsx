@@ -28,6 +28,16 @@ function Header({ children, className }: HeaderProps) {
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
 
+  const handleSignUp = async () => {
+    authModal.setView("sign-up");
+    authModal.onOpen();
+  };
+
+  const handleSignIn = async () => {
+    authModal.setView("sign-in");
+    authModal.onOpen();
+  };
+
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
     player.reset();
@@ -174,7 +184,7 @@ function Header({ children, className }: HeaderProps) {
               bg-transparent
               text-neutral-300
               font-medium"
-                  onClick={authModal.onOpen}
+                  onClick={handleSignUp}
                 >
                   Sign up
                 </Button>
@@ -185,7 +195,7 @@ function Header({ children, className }: HeaderProps) {
               bg-white
               px-6
               py-2"
-                  onClick={authModal.onOpen}
+                  onClick={handleSignIn}
                 >
                   Log in
                 </Button>
@@ -195,40 +205,6 @@ function Header({ children, className }: HeaderProps) {
         </div>
       </div>
       {children}
-      {/* <span className={styles.header_title}>
-        
-          <span className={styles.logout_container}>
-            <button className={styles.logout_button} onClick={handleLogout}>
-              Log out
-            </button>
-            <span className={styles.logout_icon}>
-              <UserSVG className={styles.logout_svg} />
-            </span>
-          </span>
-        ) : (
-          <span className={styles.logout_container}>
-            
-            <button
-              className={styles.logout_button}
-              style={{ width: "180px" }}
-              onClick={authModal.onOpen}
-            >
-              Log in
-            </button>
-          </span>
-        )}
-      </span>
-
-      <h1>Welcome back</h1>
-
-      <div className={styles.play_lists_container}>
-        <div className={styles.play_list}>
-          <span className={styles.liked_song}>
-            <HeartSVG />
-          </span>
-          <span className={styles.playlist_name}>Liked Songs</span>
-        </div>
-      </div> */}
     </header>
   );
 }
