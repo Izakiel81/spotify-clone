@@ -11,12 +11,14 @@ import useSound from "use-sound";
 
 interface PlayerContentProps {
   song: Song;
+  volume: number;
+  setVolume: (volume: number) => void;
   songUrl: string;
 }
 
-const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
+const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl, volume, setVolume }) => {
   const [isPlaying, setIsPlaying] = React.useState<boolean>(false);
-  const [volume, setVolume] = React.useState<number>(1);
+ 
 
   const Icon = isPlaying ? BsPauseFill : BsPlayFill;
   const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
