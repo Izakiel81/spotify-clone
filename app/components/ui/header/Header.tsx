@@ -12,6 +12,7 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
+import usePlayer from "@/hooks/usePlayer";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -21,6 +22,7 @@ interface HeaderProps {
 function Header({ children, className }: HeaderProps) {
   const router = useRouter();
 
+  const player = usePlayer();
   const authModal = useAuthModal();
 
   const supabaseClient = useSupabaseClient();
@@ -28,7 +30,7 @@ function Header({ children, className }: HeaderProps) {
 
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut();
-    // TODO: Reset any playing songs
+    player.reset();
 
     router.refresh();
 
@@ -156,6 +158,7 @@ function Header({ children, className }: HeaderProps) {
               </div>
               <div>
                 <Button
+                 onClick={() => router.push("/account")}
                 className="
                   bg-white
                   ">
