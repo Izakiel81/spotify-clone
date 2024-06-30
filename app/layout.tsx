@@ -28,8 +28,8 @@ export default async function RootLayout({
   const products = await getActiveProductsWithPrices();
 
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={inter.className}> 
         <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
